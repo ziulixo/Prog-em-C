@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+void Numcor (int cor, int *r, int *g, int *b){
+  if (cor==1){
+    *r=255;
+    *g=255;
+    *b=255;
+  }
+  else if (cor==2){
+    *r=0;
+    *g=0;
+    *b=255;
+  }
+  else if (cor==3){
+    *r=255;
+    *g=0;
+    *b=0;
+  }
+  else if (cor==4){
+    *r=0;
+    *g=255;
+    *b=0;
+  }
+  else if (cor==5){
+    *r=255;
+    *g=255;
+    *b=0;
+  }
+  else if (cor==6){
+    *r=255;
+    *g=0;
+    *b=255;
+  }
+  else if (cor==7){
+    *r=0;
+    *g=255;
+    *b=255;
+  }
+  else{
+    *r=0;
+    *g=0;
+    *b=0;
+  }
+  //caso necessária a correção de erros, o else da cor preta se torna um else if, do mesmo tipo dos outros e é acrescentado este outro else.
+  //else{
+    //printf("Número de cor inválido");
+  //}
+}
+
+int main(void) {
+ int cor, matricula, r, g, b, i;
+  printf("\nDiga a sua matrícula:");
+  scanf("%d", &matricula);
+  for(matricula=0; matricula<60; matricula++){
+    printf("\nDiga o número de sua cor preferida:");
+    scanf("%d", &cor);
+    //comentario referente a possibilidade de erro antes comentada.
+    //if(cor>8 || cor<1){
+     //Numcor(cor, &r, &g, &b);
+    //}
+    //else{
+    Numcor(cor, &r, &g, &b);
+    printf("\nO número de sua cor preferida é: %d", cor);
+    printf("\nEsta cor tem o valor %d de r, %d de g e %d de b", r, g, b);
+   // }
+    printf("\nDiga a sua matrícula:");
+    scanf("%d", &matricula);
+  }
+  return 0;
+}
