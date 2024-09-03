@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <math.h>
+int calcula_segundos(int hora,int minutos,int segundos){
+  int hora_seg=hora*3600;
+  int min_seg_direto=minutos*60;
+  int total_seg=segundos+min_seg_direto;
+  return total_seg;
+}
+void exibe_horario(int total_segundos){
+  int hora=total_segundos/3600;
+  int min=(total_segundos % 3600)/60;
+  int segundos=(total_segundos % 3600)%60;
+  printf("\n o horario é %d h:%d m:%d s",hora,min,segundos);
+}
+int main(void) {
+int horario_inicio,horario_fim,diferenca_horario;
+int hora_inicio,min_inicio,seg_inicio;
+int hora_fim,min_fim,seg_fim;
+printf("\nQual o hora,minuto e segundos iniciais da festa ");
+scanf("%d %d %d",&hora_inicio,&min_inicio,&seg_inicio);  
+printf("\nQual o hora,minuto e segundos finais da festa ");
+scanf("%d %d %d",&hora_fim,&min_fim,&seg_fim);
+horario_inicio = calcula_segundos(hora_inicio, min_inicio, seg_inicio);
+horario_fim = calcula_segundos(hora_fim, min_fim, seg_fim);
+diferenca_horario = horario_fim- horario_inicio;
+exibe_horario(diferenca_horario);
+  return 0;
+}
