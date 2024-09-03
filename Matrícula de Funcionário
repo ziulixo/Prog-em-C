@@ -1,0 +1,18 @@
+#include <stdio.h>
+#define TAM 5
+
+int main(void) {
+  int matricula_funcionario, i;
+  int matricula[TAM]= {1234, 234, 9871, 7878, 4356};
+  int ramal[TAM]= {888, 777, 777, 666, 111};
+  printf("\nDigite a matrícula desejada:");
+  scanf("%d", &matricula_funcionario);
+  for(i=0; i<5; i++){
+    if (matricula[i] == matricula_funcionario){
+      printf("\nContate o ramal: %d", ramal[i]);
+      return 1;
+    }
+  }
+  printf("\nRamal/Matrícula não encontrado");
+  return 0;
+}
