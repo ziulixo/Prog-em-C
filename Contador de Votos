@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main(void) {
+  int candidatos[6]={12,7,1,19,14,8};
+  int votos_computados[6]={0};
+  int voto=0;
+  printf("Diga qual Candidato você irá votar:");
+  scanf("%i",&voto);
+  while(voto>=0){
+    for(int i=0;i<6;i++){
+      if(voto==candidatos[i]){
+        votos_computados[i]++;
+      }
+    }
+    printf("\nDiga qual Candidato você irá votar:");
+    scanf("%i",&voto);
+  }
+  for(int i=0;i<6;i++){
+    printf("O Candidato %d teve %d votos\n", candidatos[i], votos_computados[i]);
+  }
+  return 0;
+}
