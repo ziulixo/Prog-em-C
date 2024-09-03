@@ -1,0 +1,82 @@
+#include <stdio.h>
+
+int buscaModelo(int qntd_model, int mtrCarros[][5], int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        if (qntd_model == mtrCarros[i][0]) { 
+            return i;
+        }
+    }
+    return -1; 
+}
+int buscaID(int id, int clientes[], int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        if (id == clientes[i]) {
+            return 1; 
+        }
+    }
+    return 0; 
+}
+
+int main() {
+    int Vclientes[100] = {1, 2, 3, 4, 5}; 
+    int mtrCarros[40][5] = {
+        {1, 2, 1, 150, 2}, {2, 4, 3, 200, 1}, {3, 1, 5, 175, 2}, {4, 3, 2, 190, 1},
+        {5, 5, 4, 220, 2}, {6, 2, 6, 160, 2}, {7, 4, 1, 210, 1}, {8, 3, 3, 180, 2},
+        {9, 1, 2, 170, 1}, {10, 5, 4, 230, 2}
+    };
+    int cadastro, num_modelo, dias;
+    int indice_cliente, indice_modelo;
+    int combustivel_aluguel[6] = {0}; 
+    printf("Digite seu cadastro(negativo para sair): ");
+    scanf("%d", &cadastro);
+
+    while (cadastro >= 0) {
+        indice_cliente = buscaID(cadastro, Vclientes, 100);
+        if (indice_cliente == 1) {
+            printf("cadastro encontrado.\n");
+            printf("Digite o número do modelo do veículo: ");
+            scanf("%d", &num_modelo);
+            indice_modelo = buscaModelo(num_modelo, mtrCarros, 10);
+            if (indice_modelo != -1) {
+                printf("Modelo encontrado.\n");
+                if (mtrCarros[indice_modelo][4] == 2) { 
+                    printf("Modelo disponível para aluguel.\n");
+                    printf("Digite o número de diárias: ");
+                    scanf("%d", &dias);
+                    int valor_diaria = mtrCarros[indice_modelo][3];
+                    int valor_total = dias * valor_diaria;
+                    mtrCarros[indice_modelo][4] = 1;
+                    int tipo_combustivel = mtrCarros[indice_modelo][2];
+                    combustivel_aluguel[tipo_combustivel] += valor_total;
+
+                    printf("Aluguel realizado com sucesso.\n");
+                    printf("Valor total do aluguel: %d\n", valor_total);
+                } else {
+                    printf("Modelo não disponível para aluguel.\n");
+                    int tipo_cambio = mtrCarros[indice_modelo][1];
+                    int tipo_combustivel = mtrCarros[indice_modelo][2];
+
+                    printf("Modelos compatíveis (tipo câmbio %d e tipo combustível %d):\n", tipo_cambio, tipo_combustivel);
+                    for (int i = 0; i < 10; i++) {
+                        if (mtrCarros[i][1] == tipo_cambio && mtrCarros[i][2] == tipo_combustivel) {
+                            printf("Número do modelo: %d\n", mtrCarros[i][0]);
+                        }
+                    }
+                }
+            } else {
+                printf("Modelo inexistente.\n");
+            }
+        } else {
+            printf("cadastro não encontrado.\n");
+        }
+
+        printf("\nDigite seu ID (negativo para sair): ");
+        scanf("%d", &cadastro);
+    }
+    printf("\nTotal de aluguéis por tipo de combustível:\n");
+    for (int i = 1; i <= 5; i++) {
+        printf("Combustível %d: %d\n", i, combustivel_aluguel[i]);
+    }
+
+    return 0;
+}
