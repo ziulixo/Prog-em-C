@@ -1,0 +1,25 @@
+#include <stdio.h>
+float calcula_percent(float total,float precisa){
+  float percentual=precisa*total/100;
+  return percentual;
+}
+void exibe_valores(float imposto_importacao, float imposto_circulacao, float taxa_entrega, float valor_total){
+  printf("\nA taxa de importação é: %.2f",imposto_importacao);
+  printf("\nO imposto de circulação é: %.2f",imposto_circulacao);
+  printf("\nA taxa de entrega é: %.2f",taxa_entrega);
+  printf("\no valor total é: %.2f",valor_total);
+}
+      
+int main(void){
+float valor_basico,imposto_importacao,imposto_circulacao,taxa_entrega;
+float valor_basico_com_importacao, valor_total;
+  printf("\nqual o valor basico do produto : ");
+  scanf("%f",&valor_basico);
+  imposto_importacao=calcula_percent(valor_basico,50);
+  valor_basico_com_importacao=imposto_importacao+valor_basico;
+  imposto_circulacao=calcula_percent(valor_basico_com_importacao,3);
+  taxa_entrega=(calcula_percent(valor_basico,10)+calcula_percent(imposto_circulacao,2));
+  valor_total = valor_basico + imposto_importacao + imposto_circulacao + taxa_entrega;
+exibe_valores(imposto_importacao,imposto_circulacao,taxa_entrega,valor_total);
+return 0;
+}
