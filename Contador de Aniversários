@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main(void) {
+  int dia=0,mes=0;
+  int vMES[12]={1,2,3,4,5,6,7,8,9,10,11,12};
+  int contaAniversario[12]={0};
+  printf("\nDiga o dia e o mês do seu aniversário:");
+  scanf("%i/%i",&dia,&mes);
+  while(dia>=0){
+    for(int i=0;i<12;i++){
+      if(mes==vMES[i]){
+        contaAniversario[i]++;
+      }
+    }
+    printf("\nDiga o dia e o mês do seu aniversário: dia/mes:");
+    scanf("%i/%i",&dia,&mes);
+  }
+  for(int i=0;i<12;i++){
+    printf("O mês %d tem %d aniversariantes\n",vMES[i],contaAniversario[i]);
+  }
+  return 0;
+}
