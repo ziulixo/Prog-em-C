@@ -21,6 +21,6 @@ float valor_basico_com_importacao, valor_total;
   imposto_circulacao=calcula_percent(valor_basico_com_importacao,3);
   taxa_entrega=(calcula_percent(valor_basico,10)+calcula_percent(imposto_circulacao,2));
   valor_total = valor_basico + imposto_importacao + imposto_circulacao + taxa_entrega;
-exibe_valores(imposto_importacao,imposto_circulacao,taxa_entrega,valor_total);
+  exibe_valores(imposto_importacao,imposto_circulacao,taxa_entrega,valor_total);
 return 0;
 }
