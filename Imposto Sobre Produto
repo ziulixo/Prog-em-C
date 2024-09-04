@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 float calcula_percent(float total,float precisa){
   float percentual=precisa*total/100;
   return percentual;
